@@ -1,0 +1,15 @@
+<div class="mb-3 coj-date-input-control">
+    <label *ngIf="label" class="form-label">{{label}} <span *ngIf="required" style="color:red">*</span></label>
+    <div>
+        <kendo-dateinput #dateModel="ngModel" [required]="required" [(ngModel)]="value" (ngModelChange)="onDateChanged()" [placeholder]="placeholder" [format]="format" [formatPlaceholder]="customFormatPlaceholder" [min]="minDate" [max]="maxDate" [readonly]="readonly"
+            [disabled]="disabled" [incompleteDateValidation]="true"></kendo-dateinput>
+    </div>
+    <div class="coj-date-input-errors">
+        <div *ngIf="dateModel.errors && dateModel.errors.incompleteDate" class="coj-date-input-error">Invalid date.</div>
+        <ng-container *ngIf="dateModel.errors && !dateModel.errors.incompleteDate">
+            <div *ngIf="dateModel.errors && dateModel.errors.required" class="coj-date-input-error">{{label}} is required.</div>
+            <div *ngIf="dateModel.errors && dateModel.errors.minError" class="coj-date-input-error">{{label}} must be great than or equal {{ minDate | date: format }}</div>
+            <div *ngIf="dateModel.errors && dateModel.errors.maxError" class="coj-date-input-error">{{label}} must be less than or equal {{ maxDate | date: format }}</div>
+        </ng-container>
+    </div>
+</div>

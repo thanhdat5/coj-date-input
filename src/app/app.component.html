@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <coj-date-input [value]="birthDate" label="Birth date:" (valueChange)="onDateChange($event)"></coj-date-input>
+                    <div class="mt-3">
+                        <button type="button" class="btn btn-primary w-100" [disabled]="isDisableButton">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
